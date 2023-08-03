@@ -1,10 +1,10 @@
-import { IsString, IsEmail, IsDate } from 'class-validator';
+import { IsString, IsEmail } from 'class-validator';
 
 export class CreateClienteDto {
   @IsString()
   nome: string;
-  @IsDate()
-  data_nascimento: Date;
+  @IsString()
+  data_nascimento: string;
   @IsString()
   endereco: string;
   @IsEmail()
