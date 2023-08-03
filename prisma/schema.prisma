@@ -8,16 +8,25 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
-} 
-
-model Cliente {
-  id Int @id @default(autoincrement())
-  nome String
-  data_nascimento DateTime
-  endereco String
-  email String @unique
-  senha String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
+model Cliente {
+  id              Int      @id @default(autoincrement())
+  nome            String
+  data_nascimento String
+  endereco        String
+  email           String   @unique
+  senha           String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  Conta           Conta[]
+}
+
+model Conta {
+  numero_conta Int      @id @default(autoincrement())
+  cliente    Cliente  @relation(fields: [id_cliente], references: [id])
+  id_cliente Int
+  saldo      Float
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
