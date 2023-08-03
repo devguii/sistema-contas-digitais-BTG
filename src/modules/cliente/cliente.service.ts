@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { Cliente } from '@prisma/client';
+import { UpdateClienteDto } from './dto/update-cliente.dto';
 
 @Injectable()
 export class ClienteService {
@@ -48,5 +49,19 @@ export class ClienteService {
           },
         });
       });
+  }
+  async updateCliente(updateClienteDto: UpdateClienteDto, id: number) {
+    return await this.prisma.cliente.update({
+      where: {
+        id: Number(id),
+      },
+      data: {
+        nome: updateClienteDto.nome,
+        data_nascimento: updateClienteDto.data_nascimento,
+        endereco: updateClienteDto.endereco,
+        email: updateClienteDto.email,
+        senha: updateClienteDto.senha,
+      },
+    });
   }
 }
