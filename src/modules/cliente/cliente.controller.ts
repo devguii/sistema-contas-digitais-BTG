@@ -11,6 +11,10 @@ export class ClienteController {
   async getClientes() {
     return this.clienteService.getClientes();
   }
+  @Get(':id')
+  async getCliente(@Param('id') id: number) {
+    return this.clienteService.getCliente(Number(id));
+  }
   @Post('create')
   async createCliente(@Body() createClienteDto: CreateClienteDto) {
     return this.clienteService.createCliente(createClienteDto);

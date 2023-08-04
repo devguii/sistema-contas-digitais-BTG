@@ -20,6 +20,22 @@ export class ClienteService {
       },
     });
   }
+  async getCliente(id: number) {
+    return await this.prisma.cliente.findUnique({
+      where: {
+        id: Number(id),
+      },
+      select: {
+        id: true,
+        nome: true,
+        data_nascimento: true,
+        endereco: true,
+        email: true,
+        senha: false,
+        conta: true,
+      },
+    });
+  }
   async createCliente(createClienteDto: CreateClienteDto) {
     return await this.prisma.cliente
       .create({
