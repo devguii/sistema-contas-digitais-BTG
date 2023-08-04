@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id              Int      @id @default(autoincrement())
+  nome            String
+  data_nascimento String
+  endereco        String
+  email           String   @unique(map: "Cliente_email_key")
+  senha           String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime?
+  conta           Conta[]
+}
+
+model Conta {
+  numero_conta Int            @id @default(autoincrement())
+  id_cliente   Int
+  saldo        Float
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime?
+  cliente      Cliente        @relation(fields: [id_cliente], references: [id], map: "Conta_id_cliente_fkey")
+  movimentacao Movimentacao[]
+
+  @@index([id_cliente], map: "Conta_id_cliente_fkey")
+}
+
+model Movimentacao {
+  id_movimentacao Int      @id @default(autoincrement())
+  numero_conta    Int
+  tipo            String
+  valor           Float
+  data_movimentacao DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime?
+  conta           Conta    @relation(fields: [numero_conta], references: [numero_conta], map: "Movimentacao_numero_conta_fkey")
+
+  @@index([numero_conta], map: "Movimentacao_numero_conta_fkey")
+}
