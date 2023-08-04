@@ -2,7 +2,6 @@ import { CreateContaDto } from './dto/create-conta.dto';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateClienteDto } from './dto/create-cliente.dto';
-import { Cliente } from '@prisma/client';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 
 @Injectable()
@@ -17,6 +16,7 @@ export class ClienteService {
         endereco: true,
         email: true,
         senha: false,
+        conta: true,
       },
     });
   }
