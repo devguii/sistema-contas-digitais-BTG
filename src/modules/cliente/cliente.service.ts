@@ -1,4 +1,3 @@
-import { CreateContaDto } from './dto/create-conta.dto';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateClienteDto } from './dto/create-cliente.dto';
