@@ -74,11 +74,11 @@ Após concluir a instalação, você deverá iniciar um banco de dados dentro do
 
 1. Agora entre no arquivo `".env"` (no caso de não existir, crie o mesmo na raíz do diretório da API).
 2. Altere o valor da variável `"DATABASE_URL"` para `mysql://root:[*SENHA_DO_MYSQL*]@localhost:[*PORTA_DO_DB*]/[*NOME_DO_BD*]?schema=public` alterando os campos contendo [* *] pelos respectivos valores. (crie a variável caso não exista)
-3. Inicie a API pelo terminal utilizando o comando: `npm start:dev` ou `yarn start:dev`
+3. execute o comando `npx prisma generate`
 
 pode executar a API com o seguinte comando:
 
-      npm start:dev
+      npm run start:dev
 
 ou
 
@@ -86,11 +86,13 @@ ou
 
 Isso iniciará o servidor da API e você já poderá testa-lá no Postman, Insomnia ou pelo Front.
 
+Em caso de algum erro verifique se seu Banco de Dados no MySQL está funcinando corretamente, ou tente abrir um Banco por vez em uma determinada porta.
+
 ## Executando o Front
 
-Após concluir a instalação do front e executar a API, você pode executar o front com o seguinte comando:
+Após concluir a instalação do front e executar a API, você pode executar o front com o seguinte comando em um novo terminal:
 
-      npm dev
+      npm run dev
 
 ou
 
