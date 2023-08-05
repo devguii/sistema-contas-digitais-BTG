@@ -73,7 +73,7 @@ Siga as etapas abaixo para instalar o front:
 Após concluir a instalação, você deverá iniciar um banco de dados dentro do MySQL.
 
 1. Agora entre no arquivo `".env"` (no caso de não existir, crie o mesmo na raíz do diretório da API).
-2. Altere o valor da variável `"DATABASE_URL"` para `mysql://root:[*SENHA_DO_MYSQL*]@localhost:[*PORTA_DO_DB*]/[*NOME_DO_BD*]?schema=public` alterando os campos entre [ ]. (crie a variável caso não exista)
+2. Altere o valor da variável `"DATABASE_URL"` para `mysql://root:[*SENHA_DO_MYSQL*]@localhost:[*PORTA_DO_DB*]/[*NOME_DO_BD*]?schema=public` alterando os campos contendo [* *] pelos respectivos valores. (crie a variável caso não exista)
 3. Inicie a API pelo terminal utilizando o comando: `npm start:dev` ou `yarn start:dev`
 
 pode executar a API com o seguinte comando:
